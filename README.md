@@ -1,7 +1,7 @@
 # Opdrachtbeschrijving
 
 ## Inleiding
-Je gaat een bloggingplatform bouwen waarbij sommige url's niet toegankelijk zijn voor gebruikers die niet zijn ingelogd. Je gaat ook concepen als doorlinken, dynamische parameters en een nep-login toepassen. De "login"-funtionaliteit is voor deze opdracht expres versimpelt. 
+Je gaat een bloggingplatform bouwen waarbij sommige url's niet toegankelijk zijn voor gebruikers die niet zijn ingelogd. Je gaat ook concepten als doorlinken, dynamische parameters en een nep-login toepassen. De "login"-funtionaliteit is voor deze opdracht expres versimpelt. 
 
 ## Applicatie starten
 Als je het project gecloned hebt naar jouw locale machine, installeer je eerst de `node_modules` door het volgende commando in de terminal te runnen:
@@ -14,7 +14,7 @@ Wanneer dit klaar is, kun je de applicatie starten met behulp van:
 
 of gebruik de WebStorm knop (npm start). Open http://localhost:3000 om de pagina in de browser te bekijken. Begin met het maken van wijzigingen in `src/App.js`: elke keer als je een bestand opslaat, zullen de wijzigingen te zien zijn op de webpagina.
 
-### Randvoorwaarden blogging platform
+## Randvoorwaarden blogging platform
 
 **Belangrijk:** Zorg dat de applicatie functioneel is voor je los gaat met styling!
 
