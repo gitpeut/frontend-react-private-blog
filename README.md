@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Opdrachtbeschrijving
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Inleiding
+Je gaat een bloggingplatform bouwen waarbij sommige url's niet toegankelijk zijn voor gebruikers die niet zijn ingelogd. Je gaat ook concepen als doorlinken, dynamische parameters en een nep-login toepassen. De "login"-funtionaliteit is voor deze opdracht expres versimpelt. 
 
-## Available Scripts
+## Applicatie starten
+Als je het project gecloned hebt naar jouw locale machine, installeer je eerst de `node_modules` door het volgende commando in de terminal te runnen:
 
-In the project directory, you can run:
+`npm install`
 
-### `npm start`
+Wanneer dit klaar is, kun je de applicatie starten met behulp van:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`npm start`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+of gebruik de WebStorm knop (npm start). Open http://localhost:3000 om de pagina in de browser te bekijken. Begin met het maken van wijzigingen in `src/App.js`: elke keer als je een bestand opslaat, zullen de wijzigingen te zien zijn op de webpagina.
 
-### `npm test`
+### Randvoorwaarden blogging platform
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Belangrijk:** Zorg dat de applicatie functioneel is voor je los gaat met styling!
 
-### `npm run build`
+#### Pagina's
+* De applicatie heeft vier pagina's:
+    1. Home pagina (`/`)
+    2. Login pagina (`/login`)
+    3. Blog overzicht pagina (`/blogposts`)
+    4. Blog-post pagina (`/blog/:id`)
+* De login pagina bevat simpelweg een knop met "Inloggen" die de gebruiker inlogt en daarna doorstuurt naar overzichtspagina
+* De blog overzicht pagina bevat: de totale hoeveelheid posts en alle blog-titels. Bij het klikken op de titel wordt de gebruiker naar de betreffende post gelinkt.
+* De blog-post pagina is een component dat op basis van de url de juiste blogpost ophaalt uit de JSON data, en deze weergeeft (_dynamic parameters_). De JSON data kun je simpelweg importeren en gebruiken als een array met objecten:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+import posts from './data/posts.json';
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+function App() {
+  console.log(posts);
+  
+  return (
+    <></>
+  );
+}
+```
+ 
+#### Navigatie
+* De navigatiebalk is boven iedere pagina zichtbaar    
+* Wanneer de bezoeker _niet_ ingelogd is, moet er een "inloggen" link in de navigatie aanwezig zijn. Deze wijst naar de Login pagina.
+* Wanneer de bezoeker _niet_ ingelogd is, is de link naar de blog-overzichtpagina niet aanwezig.
+* Als een bezoeker _wel_ ingelogd is, moet er een "uitloggen" link in de navigatie staan. De gebruiker wordt dan direct uitgelogd en naar de home-pagina gestuurd.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Toegankelijkheid
+* Wanneer de bezoeker _niet_ ingelogd is, zijn zowel de blogposts als de blog overzichtpagina niet te bezoeken. Dit zijn dus private routes!
+* Het in- en uitlog proces is simpelweg het toggelen van de `isAuthenticated` state van `true` naar `false`. Je zult de waarde en setter-functie dus vanaf App.js moeten doorgeven aan de componenten die deze waardes nodig hebben.
 
-### `npm run eject`
+## Stappenplan
+1. Maak vier pagina componenten en zet er wat dummy content op. Geef alle "pagina's" weer in `App.js`
+2. Installeer `react-router-dom` en zet de basis routing op in de applicatie (gebruik de [documentatie](https://reactrouter.com/web/guides/quick-start) of EdHub als geheugensteuntje). Zorg dat je alle pagina's kunt bezoeken. Je hoeft nog geen rekening te houden met toegankelijkheid.
+3. Implementeer de navigatie (zonder rekening te houden met toegankelijkheid) zodat alle links werken.
+4. Geef alle blogpost-titels weer in de overzichtpagina en zorg ervoor dat de titels klikbaar zijn en naar die blogpost wijzen.
+5. Zorg ervoor dat je de dynamische `id` op de blogpost pagina uit de url haalt, en op basis van die `id` de juiste post laat zien.
+6. Tijd om onze applicatie te beveiligen! Zorg ervoor dat de menu-navigatie de juiste items laat zien, op basis van de waarde uit `isAuthenticated`
+7. Zorg er nu voor dat als de gebruiker op de 'inlog'-knop klikt, de `isAuthenticated` state naar `true` veranderd wordt en de gebruiker wordt doorgestuurd naar de overzichtspagina.
+8. Zorg er ook voor dat als de gebruiker op de 'uitlog'-knop in de navigatie klikt, de `isAuthenticated` state naar `false` veranderd wordt en de gebruiker wordt doorgestuurd naar de homepagina.
+9. Zorg ervoor dat de overzichts- en post pagina's niet toegankelijk zijn voor gebruikers die niet zijn ingelogd doormiddel van een `<Redirect>` component.
+10. Maak hier nu een apart `<PrivateRoute>` component voor die je kunt hergebruiken!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Bonus opdrachten
+* Make it look nice!
+* Voeg een React hook form toe aan de login pagina waar de gebruiker ook daadwerkelijk gegevens kan invullen. Je kunt dan een `users.json` bestand maken met gebruikers erin, zodat je iemand daadwerkelijk kunt laten "inloggen" met een bestaand account.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
