@@ -1,7 +1,7 @@
 # Opdrachtbeschrijving
 
 ## Inleiding
-Je gaat een bloggingplatform bouwen waarbij sommige url's niet toegankelijk zijn voor gebruikers die niet zijn ingelogd. Je gaat ook concepten als doorlinken, dynamische parameters en een nep-login toepassen. De "login"-funtionaliteit is voor deze opdracht expres versimpelt. 
+Je gaat een bloggingplatform bouwen waarbij sommige url's niet toegankelijk zijn voor gebruikers die niet zijn ingelogd. Je gaat ook concepten als doorlinken, dynamische parameters en een nep-login toepassen. De "login"-funtionaliteit is voor deze opdracht met opzet versimpelt. 
 
 ## Applicatie starten
 Als je het project gecloned hebt naar jouw locale machine, installeer je eerst de `node_modules` door het volgende commando in de terminal te runnen:
@@ -22,11 +22,13 @@ of gebruik de WebStorm knop (npm start). Open http://localhost:3000 om de pagina
 * De applicatie heeft vier pagina's:
     1. Home pagina (`/`)
     2. Login pagina (`/login`)
-    3. Blog overzicht pagina (`/blogposts`)
-    4. Blog-post pagina (`/blog/:id`)
-* De login pagina bevat simpelweg een knop met "Inloggen" die de gebruiker inlogt en daarna doorstuurt naar overzichtspagina
-* De blog overzicht pagina bevat: de totale hoeveelheid posts en alle blog-titels. Bij het klikken op de titel wordt de gebruiker naar de betreffende post gelinkt.
-* De blog-post pagina is een component dat op basis van de url de juiste blogpost ophaalt uit de JSON data, en deze weergeeft (_dynamic parameters_). De JSON data kun je simpelweg importeren en gebruiken als een array met objecten:
+    3. Blog Overzicht pagina (`/blogposts`)
+    4. Blogpost pagina (`/blog/:id`)
+* De Login pagina bevat simpelweg een knop met "Inloggen" die de gebruiker inlogt en daarna doorstuurt naar overzichtspagina.
+* De Blog Overzicht pagina bevat:
+    * de totale hoeveelheid posts (getal)
+    * ... en alle blog-titels. De titels zijn links die je doorlinken naar die specifieke post.
+* De Blogpost pagina is een component dat op basis van de parameter in de url de juiste blogpost ophaalt uit de JSON data (deze is bijgeleverd), en deze weergeeft (_dynamic parameters_). De JSON data kun je simpelweg importeren en gebruiken als een array met objecten:
 
 ```javascript
 import posts from './data/posts.json';
@@ -43,11 +45,11 @@ function App() {
 #### Navigatie
 * De navigatiebalk is boven iedere pagina zichtbaar    
 * Wanneer de bezoeker _niet_ ingelogd is, moet er een "inloggen" link in de navigatie aanwezig zijn. Deze wijst naar de Login pagina.
-* Wanneer de bezoeker _niet_ ingelogd is, is de link naar de blog-overzichtpagina niet aanwezig.
+* Wanneer de bezoeker _niet_ ingelogd is, is de link naar de Blog Overzichtpagina niet aanwezig.
 * Als een bezoeker _wel_ ingelogd is, moet er een "uitloggen" link in de navigatie staan. De gebruiker wordt dan direct uitgelogd en naar de home-pagina gestuurd.
 
 #### Toegankelijkheid
-* Wanneer de bezoeker _niet_ ingelogd is, zijn zowel de blogposts als de blog overzichtpagina niet te bezoeken. Dit zijn dus private routes!
+* Wanneer de bezoeker _niet_ ingelogd is, zijn zowel de blogposts als de Blog Overzichtpagina niet te bezoeken. Dit zijn dus private routes!
 * Het in- en uitlog proces is simpelweg het toggelen van de `isAuthenticated` state van `true` naar `false`. Je zult de waarde en setter-functie dus vanaf App.js moeten doorgeven aan de componenten die deze waardes nodig hebben.
 
 ## Stappenplan
