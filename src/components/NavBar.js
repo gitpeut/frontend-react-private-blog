@@ -7,27 +7,29 @@ import Marcus from '../assets/Marcus-Aurelius.jpg';
 import Nerva from '../assets/Nerva.jpg';
 import Trajanus from '../assets/Trajanus.jpg';
 
-function NavBar( {isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVisible, userDetails, setUserDetails}) {
+function NavBar({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVisible, userDetails, setUserDetails}) {
 
-    const avatars = { Antoninus : Antoninus, Marcus: Marcus, Nerva: Nerva, Trajanus: Trajanus};
+    const avatars = {Antoninus: Antoninus, Marcus: Marcus, Nerva: Nerva, Trajanus: Trajanus};
 
     const history = useHistory();
-    function logout(){
-        setUserDetails( {name: "", avatar: ""} );
-        toggleIsAuthenticated( false );
+
+    function logout() {
+        setUserDetails({name: "", avatar: ""});
+        toggleIsAuthenticated(false);
         history.push('/');
     }
-    function login(){
-        console.log( "Display login...");
-        setBoxVisible( true);
-        console.log( userDetails );
-        setUserDetails( {name: "", avatar: ""} );
-        console.log( userDetails );
+
+    function login() {
+        console.log("Display login...");
+        setBoxVisible(true);
+        console.log(userDetails);
+        setUserDetails({name: "", avatar: ""});
+        console.log(userDetails);
         <LoginPage
             isAuthenticated={isAuthenticated}
             toggleIsAuthenticated={toggleIsAuthenticated}
             boxVisible={boxVisible}
-            setBoxVisible = { setBoxVisible }
+            setBoxVisible={setBoxVisible}
             setUserDetails={setUserDetails}
         />
     }
@@ -37,7 +39,7 @@ function NavBar( {isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVisi
 
             {userDetails.avatar !== "" &&
             <img
-                src={avatars.[userDetails.avatar]}
+                src={avatars[userDetails.avatar]}
                 alt="Uw held"
                 className="avatar"
                 title={userDetails.avatar}
@@ -45,11 +47,10 @@ function NavBar( {isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVisi
             }
 
             {isAuthenticated &&
-                <button  onClick={(e)=>logout(e)}>logout</button>
+            <button onClick={(e) => logout(e)}>logout</button>
             }
 
-            {!isAuthenticated && <button onClick={(e)=>login(e)}>login</button>}
-
+            {!isAuthenticated && <button onClick={(e) => login(e)}>login</button>}
 
 
             <div className="nav-container">
