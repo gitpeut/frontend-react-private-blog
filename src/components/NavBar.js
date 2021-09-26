@@ -33,7 +33,7 @@ function NavBar({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVisib
     <>
     <nav>
 
-            {userDetails.avatar !== "" &&
+            { isAuthenticated &&
             <img
                 src={avatars[userDetails.avatar]}
                 alt="Uw held"
