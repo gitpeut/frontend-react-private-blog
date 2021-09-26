@@ -75,10 +75,10 @@ function LoginForm({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVi
         <div className={`login-div ${boxVisible ? "" : "hidden"}`}>
 
             <form
-                 // Om onduidelijke redenen (mobile first?) submit enter het form niet,
-                 // wat wel gebruikelijk is in standaard HTML.
-                 // Een keyup event is toegevoegd om dit gedrag te herstellen
-                 //onKeyUp={(e)=>formEnter(e)}
+                 // N/A Om onduidelijke redenen (mobile first?) submit enter het form niet,
+                 // N/A wat wel gebruikelijk is in standaard HTML.
+                 // N/A Een keyup event is toegevoegd om dit gedrag te herstellen
+                 // N/A onKeyUp={(e)=>formEnter(e)}
                  // door ipv handleSubmit(onFormSubmit)
                  //          handleSubmit(onFormSubmit)()
                  //( merk de function call op ) werkt enter als submit.
