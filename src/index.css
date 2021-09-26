@@ -30,6 +30,7 @@ main {
     top: 1vw;
     left: 2vw;
     background-color: indianred;
+    box-shadow: 2px 2px 5px brown;
 }
 
 .blog-text {
@@ -221,7 +222,8 @@ fieldset {
     justify-content: space-between;
     align-items: center;
 }
-[type=cancel] {
+/*[type=cancel] {  werkt nu wel, maar cancel is geen officieel type, maak een class anders valt het ooit om*/
+.cancel{
     display: inline-block;
     width: 0.5rem;
     background-color: indianred;

@@ -1,4 +1,4 @@
-import React from 'react';
+import {React} from 'react';
 import {useForm} from "react-hook-form";
 import users from '../data/users.json';
 import Antoninus from '../assets/Antoninus-Pius.jpg';
@@ -9,9 +9,6 @@ import Trajanus from '../assets/Trajanus.jpg';
 
 function LoginForm({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVisible, setUserDetails}) {
 
-    //  console.log("login visible " + boxVisible);
-    //  let currentUser = { account : "invalid" };
-
     const {register, handleSubmit, setValue, formState: {errors}} = useForm({
         mode: "onBlur",
         defaultValues: {
@@ -20,6 +17,12 @@ function LoginForm({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVi
             'image': '',
         },
     });
+
+    function formEnter(e){
+        if(e.key === 'Enter'){
+            handleSubmit(onFormSubmit)();
+        }
+    }
 
     function checkUserPassword(name, password) {
         const filteredUsers = users.filter((user) => name === user.account);
@@ -41,7 +44,6 @@ function LoginForm({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVi
 
 
     function onFormSubmit(data) {
-        //console.log(data);
         const details = {};
         if (checkUserPassword(data.user, data.password)) {
             details.name = data.user;
@@ -52,19 +54,15 @@ function LoginForm({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVi
             setBoxVisible(false);
         } else {
             toggleIsAuthenticated(false);
-            details.name = '';
-            details.avatar = '';
             setUserDetails(details);
         }
     }
 
     function cancelForm(e) {
         setBoxVisible(false);
-        e.preventDefault();
     }
 
     function radioClick(e) {
-//        console.log('target value ' + e.target.value);
         setValue('image', e.target.value);
         setValue('user', e.target.value);
     }
@@ -72,7 +70,12 @@ function LoginForm({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVi
     return (
         <div className={`login-div ${boxVisible ? "" : "hidden"}`}>
 
-            <form onSubmit={handleSubmit(onFormSubmit)}>
+            <form
+                 // Om onduidelijke redenen submit enter het form niet,
+                 // wat wel gebruikelijk is in standaard HTML.
+                 // Een keyup event is toegevoegd om dit gedrag te herstellen
+                onKeyUp={(e)=>formEnter(e)}
+                onSubmit={handleSubmit(onFormSubmit)}>
 
                 <fieldset>
                     <legend>Login</legend>
@@ -80,7 +83,11 @@ function LoginForm({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVi
                     <div className="stretchdiv">Kies een gebruiker
 
                         <button
-                            type="cancel"
+                            // button type cancel bestaat officieel niet, maar CSS
+                            // verwerkt het goed. Voor de zekerheid een aparte class
+                            // gemaakt
+                            type="button"
+                            className="cancel"
                             title="Sluit login formulier"
                             onClick={(e) => cancelForm(e)}
                         >{String.fromCodePoint("0x274C")}
