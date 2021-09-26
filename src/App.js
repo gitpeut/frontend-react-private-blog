@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom';
 
 import './App.css';
-import LoginPage from './pages/Login';
 import PostsPage from "./pages/Posts";
 import BlogPage from "./pages/Blog";
 import NavBar from "./components/NavBar";
@@ -15,7 +14,7 @@ import PrivateRoute from "./components/PrivateRoute";
 function App() {
     // We houden in de state bij of iemand is "ingelogd" (simpele versie)
     const [isAuthenticated, toggleIsAuthenticated] = useState(false);
-    const [boxVisible, setBoxVisible] = useState(false);
+    const [boxVisible, setBoxVisible] = useState((!isAuthenticated));
     const [userDetails, setUserDetails] = useState({name: "Blurb", avatar: ""});
 
     return (
@@ -24,11 +23,8 @@ function App() {
             <NavBar isAuthenticated={isAuthenticated} toggleIsAuthenticated={toggleIsAuthenticated}
                     boxVisible={boxVisible}
                     setBoxVisible={setBoxVisible} userDetails={{...userDetails}} setUserDetails={setUserDetails}/>
-            <LoginPage isAuthenticated={isAuthenticated} toggleIsAuthenticated={toggleIsAuthenticated}
-                       boxVisible={boxVisible}
-                       setBoxVisible={setBoxVisible} userDetails={{...userDetails}} setUserDetails={setUserDetails}/>
-            <Switch>
 
+            <Switch>
                     <PrivateRoute path='/posts' isAuthenticated={isAuthenticated}>
                         <PostsPage/>
                     </PrivateRoute>
@@ -37,10 +33,8 @@ function App() {
                         <BlogPage/>
                     </PrivateRoute>
 
-                    <Route path='/login' >
-                        <LoginPage show={true} isAuthenticated={isAuthenticated} toggleIsAuthenticated={toggleIsAuthenticated}
-                               boxVisible={boxVisible}
-                               setBoxVisible={setBoxVisible} userDetails={{...userDetails}} setUserDetails={setUserDetails}/>
+                    <Route path='/login'>
+                        <HomePage/>
                     </Route>
                     {/*Use the root ('/' as fallback for all unknown paths*/}
                     <Route>

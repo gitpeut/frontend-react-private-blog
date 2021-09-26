@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink, useHistory} from 'react-router-dom';
-import LoginPage from "../pages/Login";
+import LoginForm from "../components/Login";
 
 import Antoninus from '../assets/Antoninus-Pius.jpg';
 import Marcus from '../assets/Marcus-Aurelius.jpg';
@@ -16,26 +16,22 @@ function NavBar({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVisib
     function logout() {
         setUserDetails({name: "", avatar: ""});
         toggleIsAuthenticated(false);
+        setBoxVisible( false );
         history.push('/');
     }
 
     function login() {
-        console.log("Display login...");
-        setBoxVisible(true);
-        console.log(userDetails);
+ //       console.log("Display login...");
+        setBoxVisible( true );
+ //       console.log(userDetails);
         setUserDetails({name: "", avatar: ""});
-        console.log(userDetails);
-        <LoginPage
-            isAuthenticated={isAuthenticated}
-            toggleIsAuthenticated={toggleIsAuthenticated}
-            boxVisible={boxVisible}
-            setBoxVisible={setBoxVisible}
-            setUserDetails={setUserDetails}
-        />
+ //       console.log(userDetails);
     }
 
     return (
-        <nav>
+
+    <>
+    <nav>
 
             {userDetails.avatar !== "" &&
             <img
@@ -49,6 +45,8 @@ function NavBar({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVisib
             {isAuthenticated &&
             <button onClick={(e) => logout(e)}>logout</button>
             }
+
+            {/*{isAuthenticated &&  setBoxVisible(false)}*/}
 
             {!isAuthenticated && <button onClick={(e) => login(e)}>login</button>}
 
@@ -70,8 +68,14 @@ function NavBar({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVisib
 
                 </ul>
             </div>
+
         </nav>
-    );
+        <LoginForm isAuthenticated={isAuthenticated} toggleIsAuthenticated={toggleIsAuthenticated}
+                   boxVisible={boxVisible}
+                   setBoxVisible={setBoxVisible} userDetails={{...userDetails}} setUserDetails={setUserDetails}/>
+
+    </>
+);
 }
 
 export default NavBar;

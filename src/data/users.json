@@ -1,0 +1,22 @@
+[
+  {
+  "account": "Antoninus",
+  "avatar" : "Antoninus",
+  "password": "Caesar"
+},
+  {
+    "account": "Marcus",
+    "avatar" : "Marcus",
+    "password": "Caesar"
+  },
+  {
+    "account": "Nerva",
+    "avatar" : "Nerva",
+    "password": "Caesar"
+  },
+  {
+    "account": "Trajanus",
+    "avatar" : "Trajanus",
+    "password": "Caesar"
+  }
+]

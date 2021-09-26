@@ -21,7 +21,8 @@ function PostsPage({isAuthenticated}) {
             mansura condiderit, multum tamen perpetuitati eius scriptorum tuorum aeternitas addet.
             Equidem beatos puto, quibus deorum munere datum est aut facere scribenda aut scribere legenda,
             beatissimos vero, quibus utrumque. Horum in numero avunculus meus et suis libris et tuis erit.
-            Quo libentius suscipio, deposco etiam, quod iniungis. (Tacitus aan Plinius)
+            Quo libentius suscipio, deposco etiam, quod iniungis.
+            <p className="kleine-lettertjes">(Tacitus aan Plinius)</p>
             <ol>
                 {posts.map((post) => <li key={post.id}><Link className="bloglist-link"
                                                              to={`/blog/${post.id}`}>{post.title}</Link></li>)}
