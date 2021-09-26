@@ -18,11 +18,15 @@ function LoginForm({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVi
         },
     });
 
-    function formEnter(e){
-        if(e.key === 'Enter'){
-            handleSubmit(onFormSubmit)();
-        }
-    }
+    // door ipv handleSubmit(onFormSubmit)
+    //          handleSubmit(onFormSubmit)()
+    //( merk de function call op ) werkt enter als submit.
+    // Een aparte keyup handler is dan overbodig
+    // function formEnter(e){
+    //     if(e.key === 'Enter'){
+    //         handleSubmit(onFormSubmit)();
+    //     }
+    // }
 
     function checkUserPassword(name, password) {
         const filteredUsers = users.filter((user) => name === user.account);
@@ -71,11 +75,14 @@ function LoginForm({isAuthenticated, toggleIsAuthenticated, boxVisible, setBoxVi
         <div className={`login-div ${boxVisible ? "" : "hidden"}`}>
 
             <form
-                 // Om onduidelijke redenen submit enter het form niet,
+                 // Om onduidelijke redenen (mobile first?) submit enter het form niet,
                  // wat wel gebruikelijk is in standaard HTML.
                  // Een keyup event is toegevoegd om dit gedrag te herstellen
-                onKeyUp={(e)=>formEnter(e)}
-                onSubmit={handleSubmit(onFormSubmit)}>
+                 //onKeyUp={(e)=>formEnter(e)}
+                 // door ipv handleSubmit(onFormSubmit)
+                 //          handleSubmit(onFormSubmit)()
+                 //( merk de function call op ) werkt enter als submit.
+                onSubmit={handleSubmit(onFormSubmit)()}>
 
                 <fieldset>
                     <legend>Login</legend>
