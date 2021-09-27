@@ -7,8 +7,7 @@ body {
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: 'Courier New', monospace;
 }
 
 main {
@@ -52,8 +51,6 @@ main {
     margin-top: 0;
     width: 70%;
     display: flex;
-    /*flex-direction: row;*/
-    /*justify-content: center;*/
     align-items: center;
 }
 
@@ -194,7 +191,7 @@ fieldset {
 
 /* CHECKED STYLES */
 [type=radio]:checked + img {
-    outline: 3px solid orange;
+    outline: 3px solid darkred;
 }
 
 [type=text], [type=password] {
