@@ -15,7 +15,7 @@ function App() {
     // We houden in de state bij of iemand is "ingelogd" (simpele versie)
     const [isAuthenticated, toggleIsAuthenticated] = useState(false);
     const [boxVisible, setBoxVisible] = useState((!isAuthenticated));
-    const [userDetails, setUserDetails] = useState({name: "Blurb", avatar: ""});
+    const [userDetails, setUserDetails] = useState({name: "Blurb"});
 
     return (
 
