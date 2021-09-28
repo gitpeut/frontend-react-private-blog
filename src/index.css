@@ -1,13 +1,250 @@
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: "Times New Roman", serif;
+    background: rgb(199, 155, 34);
+    background: radial-gradient(circle, indianred 0%, brown 100%);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: 'Courier New', monospace;
 }
+
+main {
+    color: white;
+    width: 100vw;
+
+}
+
+.page-container {
+    width: 50vw;
+    margin: 60px auto;
+    font-size: 1.6vw;
+    line-height: 1.6;
+}
+
+.login-div {
+    z-index: 2;
+    position: absolute;
+    top: 1vw;
+    left: 2vw;
+    background-color: indianred;
+    box-shadow: 2px 2px 5px brown;
+}
+
+.blog-text {
+    width: 50vw;
+    margin: 10vw auto;
+    font-family: "Times New Roman", serif;
+
+}
+
+.colums-2 {
+    column-count: 2;
+}
+
+.colums-3 {
+    column-count: 3;
+}
+
+.nav-container {
+    margin-top: 0;
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    background-color: coral;
+    background: radial-gradient(circle, brown 0%, indianred 100%);
+    display: flex;
+    justify-content: flex-start;
+    height: 4rem;
+    font-family: "Times New Roman", serif;
+}
+
+nav button {
+    width: 20%;
+    padding: 5px;
+    background-color: indianred;
+    border: 0;
+    cursor: pointer;
+    font-size: 1rem;
+
+}
+
+nav h4 {
+    width: 30%;
+    padding-left: 1vw;
+    color: black;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-family: "Times New Roman", serif;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+ul > li {
+    font-family: Arial, sans-serif;
+    width: 50px;
+}
+
+/*https://www.456bereastreet.com/archive/201105/styling_ordered_list_numbers/*/
+ol {
+    counter-reset: li; /* Initiate a counter */
+    margin-left: 0; /* Remove the default left margin */
+    padding-left: 0; /* Remove the default left padding */
+}
+
+ol > li {
+    position: relative; /* Create a positioning context */
+    margin: 0 0 6px 2em; /* Give each list item a left margin to make room for the numbers */
+    padding: 4px 8px; /* Add some spacing around the content */
+    list-style: none; /* Disable the normal item numbering */
+    border-top: 2px solid #666;
+    background: indianred;
+    color: white;
+
+}
+
+ol > li:before {
+    content: counter(li); /* Use the counter as content */
+    counter-increment: li; /* Increment the counter by 1 */
+    /* Position and style the number */
+    position: absolute;
+    top: -2px;
+    left: -2em;
+    box-sizing: border-box;
+    width: 2em;
+    /* Some space between the number and the content in browsers that support
+       generated content but not positioning it (Camino 2 is one example) */
+    margin-right: 8px;
+    padding: 4px;
+    border-top: 2px solid #666;
+    color: white;
+    background: #666;
+    font-weight: bold;
+    font-family: "Times New Roman", serif;
+    text-align: center;
+}
+
+
+.nav-link {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.active-link {
+    border-bottom: 2px solid white;
+    color: white;
+    text-decoration: none;
+}
+
+.kleine-lettertjes {
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+.bloglist-link {
+    color: white;
+    background-color: transparent;
+    font-family: "Times New Roman", serif;
+}
+
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    color: darkred;
+    border-color: darkred;
+}
+
+.radiobox {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+/* HIDE RADIO */
+/* https://stackoverflow.com/questions/17541614/use-images-instead-of-radio-buttons */
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+    outline: 3px solid darkred;
+}
+
+[type=text], [type=password] {
+    color: darkred;
+    background-color: indianred;
+    border: 0;
+    padding: 0.5rem;
+}
+
+[type=text]:focus, [type=password]:focus  {
+    outline: none;
+    background-color: burlywood;
+}
+
+[type=submit] {
+    cursor: pointer;
+    background-color: brown;
+    border-color: indianred;
+}
+
+.stretchdiv{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+/*[type=cancel] {  werkt nu wel, maar cancel is geen officieel type, maak een class anders valt het ooit om*/
+.cancel{
+    display: inline-block;
+    width: 0.5rem;
+    background-color: indianred;
+    border: 0;
+}
+
+.avatar {
+    height: 7vh;
+    margin: 7px;
+    border: 1px solid black;
+}
+
+nav .avatar {
+    height: 85%;
+    margin-top: 3px;
+    border: 1px solid black;
+}
+
+.hidden {
+    visibility: hidden;
+}
+.notdisplayed {
+    display: none;
+}
+
+
+
